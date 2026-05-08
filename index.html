@@ -4,7 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AG — Advertising Garden | Grow Your Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB_Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ==================== CSS VARIABLES (Design System) ==================== */
+        :root {
+            /* Colors - Warm Garden Palette */
+            --primary-coral: #cc785c;
+            --primary-coral-active: #a9583e;
+            --primary-coral-disabled: #e6dfd8;
+            
+            --ink: #141413;
+            --body: #3d3d3a;
+            --body-strong: #252523;
+            --muted: #6c6a64;
+            --muted-soft: #8e8b82;
+            
+            /* Canvas - Warm cream base */
+            --canvas: #faf9f5;
+            --surface-soft: #f5f0e8;
+            --surface-card: #efe9de;
+            --surface-cream-strong: #e8e0d2;
+            
+            /* Dark surfaces - Product chrome */
+            --surface-dark: #181715;
+            --surface-dark-elevated: #252320;
+            --surface-dark-soft: #1f1e1b;
+            
+            /* Borders & subtle */
+            --hairline: #e6dfd8;
+            --hairline-soft: #ebe6df;
+            
+            /* Text on colors */
+            --on-primary: #ffffff;
+            --on-dark: #faf9f5;
+            --on-dark-soft: #a09d96;
+            
+            /* Accents */
+            --accent-teal: #5db8a6;
+            --accent-amber: #e8a55a;
+            --accent-green: #7ba87f;
+            --success: #5db872;
+            --error: #c64545;
+            
+            /* Typography */
+            --font-display: 'EB Garamond', 'Tiempos Headline', serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-code: 'JetBrains Mono', 'Courier New', monospace;
+            
+            /* Spacing */
+            --space-xxs: 4px;
+            --space-xs: 8px;
+            --space-sm: 12px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-xxl: 48px;
+            --space-section: 96px;
+            
+            /* Radius */
+            --radius-xs: 4px;
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-pill: 9999px;
+        }
+
         /* ==================== RESET & BASE ==================== */
         * {
             margin: 0;
@@ -12,26 +77,11 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-green: #2d5a3d;
-            --light-green: #4a7c59;
-            --soft-green: #7ba87f;
-            --pale-green: #c8e6c0;
-            --accent-green: #81c784;
-            --bg-light: #f8faf7;
-            --bg-white: #ffffff;
-            --text-dark: #1a1a1a;
-            --text-gray: #555555;
-            --shadow-light: 0 4px 20px rgba(45, 90, 61, 0.08);
-            --shadow-medium: 0 8px 40px rgba(45, 90, 61, 0.12);
-            --shadow-glow: 0 0 30px rgba(129, 199, 132, 0.15);
-        }
-
         body {
-            font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
+            font-family: var(--font-body);
+            line-height: 1.55;
+            color: var(--body);
+            background-color: var(--canvas);
             overflow-x: hidden;
         }
 
@@ -40,98 +90,188 @@
         }
 
         /* ==================== TYPOGRAPHY ==================== */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.3;
-            color: var(--primary-green);
-        }
-
         h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            letter-spacing: -1px;
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 64px);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            color: var(--ink);
         }
 
         h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 1rem;
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 5vw, 48px);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: var(--ink);
+            margin-bottom: var(--space-lg);
         }
 
         h3 {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 4vw, 36px);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            color: var(--ink);
+        }
+
+        h4 {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+            color: var(--ink);
+        }
+
+        .title-lg {
+            font-family: var(--font-body);
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--ink);
+        }
+
+        .title-md {
+            font-family: var(--font-body);
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--ink);
+        }
+
+        .title-sm {
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--ink);
         }
 
         p {
-            color: var(--text-gray);
-            line-height: 1.8;
+            color: var(--body);
+            line-height: 1.65;
+        }
+
+        .text-muted {
+            color: var(--muted);
+        }
+
+        .text-muted-soft {
+            color: var(--muted-soft);
+        }
+
+        .caption {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--muted);
+        }
+
+        .caption-uppercase {
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
         }
 
         /* ==================== BUTTONS ==================== */
         .btn {
-            display: inline-block;
-            padding: 0.85rem 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            height: 40px;
             border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 500;
+            font-family: var(--font-body);
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            font-family: 'Poppins', 'Inter', sans-serif;
+            transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent-green) 0%, var(--light-green) 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(129, 199, 132, 0.3);
+            background-color: var(--primary-coral);
+            color: var(--on-primary);
+            box-shadow: 0 1px 3px rgba(20, 20, 19, 0.08);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(129, 199, 132, 0.4);
+            background-color: var(--primary-coral-active);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(204, 120, 92, 0.16);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
         .btn-secondary {
-            background: var(--bg-white);
-            color: var(--primary-green);
-            border: 2px solid var(--accent-green);
-            box-shadow: var(--shadow-light);
+            background-color: var(--canvas);
+            color: var(--ink);
+            border: 1px solid var(--hairline);
+            box-shadow: 0 1px 3px rgba(20, 20, 19, 0.08);
         }
 
         .btn-secondary:hover {
-            background: var(--pale-green);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
+            background-color: var(--surface-card);
+            border-color: var(--accent-green);
+        }
+
+        .btn-secondary-dark {
+            background-color: var(--surface-dark-elevated);
+            color: var(--on-dark);
+            border: 1px solid var(--surface-dark);
+        }
+
+        .btn-secondary-dark:hover {
+            background-color: var(--surface-dark);
+        }
+
+        .btn-text {
+            background: transparent;
+            color: var(--primary-coral);
+            padding: 0;
+            height: auto;
+        }
+
+        .btn-text:hover {
+            text-decoration: underline;
+        }
+
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            border-radius: var(--radius-pill);
+            background-color: var(--canvas);
+            color: var(--ink);
+            border: 1px solid var(--hairline);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
 
         /* ==================== LAYOUT ==================== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 var(--space-xl);
         }
 
         .section {
-            padding: 5rem 0;
+            padding: var(--space-section) 0;
+            position: relative;
         }
 
         .section-title {
@@ -140,23 +280,23 @@
             animation: fadeInUp 0.6s ease;
         }
 
-        .section-title p {
-            font-size: 0.95rem;
-            color: var(--soft-green);
+        .section-label {
+            display: inline-block;
+            margin-bottom: var(--space-md);
+            padding: 4px 12px;
+            background-color: var(--surface-card);
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+            border-radius: var(--radius-pill);
         }
 
         /* ==================== ANIMATIONS ==================== */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes fadeInUp {
@@ -212,13 +352,9 @@
             }
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         @keyframes leafFall {
@@ -228,17 +364,29 @@
             }
         }
 
-        /* ==================== FLOATING PARTICLES ==================== */
+        /* ==================== SCROLL REVEAL ==================== */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        /* ==================== FLOATING PARTICLES & LEAVES ==================== */
         .particle {
             position: fixed;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: var(--accent-green);
             border-radius: 50%;
-            opacity: 0.15;
+            opacity: 0.1;
             pointer-events: none;
-            animation: float 6s ease-in-out infinite;
-            z-index: 1;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
         }
 
         .leaf {
@@ -255,10 +403,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.2rem 0;
-            background: rgba(248, 250, 247, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-light);
+            height: 64px;
+            background: rgba(250, 249, 245, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--hairline);
             z-index: 1000;
             animation: fadeInDown 0.5s ease;
         }
@@ -267,66 +415,67 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 var(--space-xl);
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: var(--font-display);
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
-        .logo-icon {
+        .logo-mark {
             display: inline-block;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent-green), var(--light-green));
-            border-radius: 8px;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary-coral), var(--accent-green));
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
             color: white;
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 14px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: var(--space-xl);
             align-items: center;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-gray);
+            color: var(--body);
+            font-size: 14px;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
             position: relative;
+        }
+
+        nav a:hover {
+            color: var(--ink);
         }
 
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -6px;
             left: 0;
             width: 0;
-            height: 2px;
-            background: var(--accent-green);
+            height: 1px;
+            background: var(--primary-coral);
             transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--primary-green);
         }
 
         nav a:hover::after {
@@ -345,65 +494,64 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--bg-light) 0%, rgba(200, 230, 192, 0.2) 100%);
+            padding-top: 64px;
+            background: linear-gradient(135deg, var(--canvas) 0%, var(--surface-soft) 100%);
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(129, 199, 132, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(123, 168, 127, 0.08) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
+            animation: float 12s ease-in-out infinite;
+            z-index: 0;
         }
 
         .hero::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(74, 124, 89, 0.08) 0%, transparent 70%);
+            bottom: -150px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(204, 120, 92, 0.06) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 10s ease-in-out infinite 1s;
+            animation: float 14s ease-in-out infinite 1s;
+            z-index: 0;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 700px;
+            max-width: 800px;
             animation: fadeInUp 0.8s ease;
         }
 
         .hero h1 {
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: var(--space-lg);
+            color: var(--ink);
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-            font-weight: 500;
+            font-size: 18px;
+            color: var(--body);
+            margin-bottom: var(--space-xxl);
+            font-weight: 400;
+            line-height: 1.6;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: var(--space-md);
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
         .hero-buttons .btn {
@@ -413,20 +561,20 @@
         @media (max-width: 768px) {
             .hero {
                 min-height: 85vh;
-                padding: 100px 1.5rem 2rem;
+                padding: 80px var(--space-md) var(--space-lg);
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 16px;
             }
 
             .hero-buttons {
                 flex-direction: column;
-                gap: 1rem;
+                gap: var(--space-md);
             }
 
             .hero-buttons .btn {
@@ -436,21 +584,21 @@
 
         /* ==================== FEATURES SECTION ==================== */
         .features {
-            background: var(--bg-white);
+            background: var(--canvas);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-xl);
         }
 
         .feature-card {
-            padding: 2rem;
-            background: var(--bg-light);
-            border-radius: 12px;
-            border: 1px solid rgba(129, 199, 132, 0.2);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: var(--space-xl);
+            background: var(--surface-card);
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             animation: fadeInUp 0.6s ease both;
@@ -472,15 +620,14 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            background: var(--bg-white);
-            box-shadow: var(--shadow-medium), var(--shadow-glow);
-            border-color: var(--accent-green);
+            transform: translateY(-6px);
+            border-color: var(--primary-coral);
+            box-shadow: 0 12px 32px rgba(204, 120, 92, 0.1);
         }
 
         .feature-card:hover::before {
@@ -489,35 +636,31 @@
 
         .feature-icon {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
             display: inline-block;
-            animation: pulse 2s ease-in-out infinite;
+            animation: pulse-soft 3s ease-in-out infinite;
         }
 
         .feature-card h3 {
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
+            margin-bottom: var(--space-sm);
+            font-size: 20px;
         }
 
         .feature-card p {
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 14px;
+            line-height: 1.65;
         }
 
         @media (max-width: 768px) {
             .features-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
+                gap: var(--space-lg);
             }
         }
 
         /* ==================== WHY JOIN SECTION ==================== */
         .why-join {
-            background: linear-gradient(135deg, var(--bg-light) 0%, rgba(200, 230, 192, 0.15) 100%);
+            background: linear-gradient(135deg, var(--surface-soft) 0%, rgba(123, 168, 127, 0.04) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -529,9 +672,10 @@
             right: -200px;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(129, 199, 132, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(123, 168, 127, 0.08) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
+            animation: float 12s ease-in-out infinite;
+            z-index: 0;
         }
 
         .why-content {
@@ -544,13 +688,13 @@
         }
 
         .why-text h2 {
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-xxl);
         }
 
         .why-item {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xxl);
             animation: slideInLeft 0.6s ease both;
         }
 
@@ -559,45 +703,27 @@
         .why-item:nth-child(3) { animation-delay: 0.3s; }
 
         .why-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             flex-shrink: 0;
         }
 
         .why-text-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 18px;
+            margin-bottom: var(--space-sm);
         }
 
         .why-image {
             position: relative;
             height: 400px;
-            background: var(--bg-white);
-            border-radius: 16px;
-            box-shadow: var(--shadow-medium);
+            background: linear-gradient(135deg, var(--surface-card) 0%, var(--accent-green) 100%);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 20px 48px rgba(20, 20, 19, 0.08);
             overflow: hidden;
             animation: slideInRight 0.6s ease;
-        }
-
-        .why-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--pale-green) 0%, var(--accent-green) 100%);
-            opacity: 0.8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .why-image::after {
-            content: '🌱';
-            position: absolute;
-            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 8rem;
-            z-index: 2;
         }
 
         @media (max-width: 968px) {
@@ -607,16 +733,13 @@
 
             .why-image {
                 height: 300px;
-            }
-
-            .why-image::after {
                 font-size: 6rem;
             }
         }
 
         /* ==================== PERKS SECTION ==================== */
         .perks {
-            background: var(--bg-white);
+            background: var(--canvas);
             position: relative;
         }
 
@@ -624,29 +747,30 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(74, 124, 89, 0.08) 0%, transparent 70%);
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(204, 120, 92, 0.05) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
+            animation: float 12s ease-in-out infinite;
+            z-index: 0;
         }
 
         .perks-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-lg);
             position: relative;
             z-index: 2;
         }
 
         .perk-item {
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--pale-green) 0%, rgba(200, 230, 192, 0.5) 100%);
-            border-radius: 12px;
+            padding: var(--space-xl);
+            background: linear-gradient(135deg, var(--surface-card) 0%, rgba(200, 230, 192, 0.1) 100%);
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-lg);
             text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(129, 199, 132, 0.3);
+            transition: all 0.3s ease;
             animation: fadeInUp 0.6s ease both;
         }
 
@@ -656,60 +780,63 @@
         .perk-item:nth-child(4) { animation-delay: 0.4s; }
 
         .perk-item:hover {
-            transform: translateY(-15px) scale(1.05);
-            background: linear-gradient(135deg, var(--accent-green) 0%, var(--light-green) 100%);
-            color: white;
-            box-shadow: var(--shadow-medium), var(--shadow-glow);
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, var(--primary-coral), var(--accent-amber));
+            color: var(--on-primary);
+            border-color: var(--primary-coral);
+            box-shadow: 0 16px 40px rgba(204, 120, 92, 0.16);
         }
 
         .perk-item:hover p {
-            color: white;
+            color: var(--on-primary);
         }
 
         .perk-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.8rem;
+            margin-bottom: var(--space-md);
             display: inline-block;
             transition: transform 0.3s ease;
         }
 
         .perk-item:hover .perk-icon {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.15) rotate(8deg);
         }
 
         .perk-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-green);
+            font-size: 16px;
+            margin-bottom: var(--space-sm);
+            color: var(--ink);
             transition: color 0.3s ease;
         }
 
         .perk-item:hover h3 {
-            color: white;
+            color: var(--on-primary);
+        }
+
+        .perk-item p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--muted);
+            transition: color 0.3s ease;
         }
 
         @media (max-width: 768px) {
             .perks-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .perk-item {
-                padding: 1.5rem;
-            }
-
-            .perk-icon {
-                font-size: 2rem;
-            }
         }
 
         /* ==================== CTA SECTION ==================== */
         .cta {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-coral) 0%, var(--accent-amber) 100%);
+            color: var(--on-primary);
             text-align: center;
-            padding: 5rem 2rem;
+            padding: var(--space-xxl) var(--space-xl);
+            margin: var(--space-section) 0;
+            border-radius: var(--radius-xl);
             position: relative;
             overflow: hidden;
+            animation: fadeInUp 0.6s ease;
         }
 
         .cta::before {
@@ -719,9 +846,10 @@
             right: -10%;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
+            animation: float 10s ease-in-out infinite;
+            z-index: 0;
         }
 
         .cta::after {
@@ -733,52 +861,53 @@
             height: 400px;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 10s ease-in-out infinite 1s;
+            animation: float 12s ease-in-out infinite 1s;
+            z-index: 0;
         }
 
         .cta-content {
             position: relative;
             z-index: 2;
-            animation: fadeInUp 0.6s ease;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .cta h2 {
             font-size: clamp(2rem, 5vw, 2.8rem);
-            color: white;
-            margin-bottom: 1.5rem;
+            color: var(--on-primary);
+            margin-bottom: var(--space-lg);
         }
 
         .cta p {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: var(--space-xxl);
+            line-height: 1.6;
         }
 
         .cta .btn-primary {
-            background: white;
-            color: var(--primary-green);
-            font-weight: 700;
+            background: var(--on-primary);
+            color: var(--primary-coral);
+            font-weight: 600;
         }
 
         .cta .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: var(--surface-card);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         @media (max-width: 768px) {
             .cta {
-                padding: 3rem 1.5rem;
+                padding: var(--space-xl);
+                margin: var(--space-xxl) 0;
             }
         }
 
         /* ==================== FOOTER ==================== */
         footer {
-            background: var(--primary-green);
-            color: white;
-            padding: 3rem 0 1rem;
+            background: var(--surface-dark);
+            color: var(--on-dark-soft);
+            padding: var(--space-xxl) 0 var(--space-lg);
             position: relative;
             overflow: hidden;
         }
@@ -790,32 +919,38 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(250, 249, 245, 0.2), transparent);
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xxl);
+            position: relative;
+            z-index: 2;
         }
 
         .footer-section h3 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            color: var(--on-dark);
+            margin-bottom: var(--space-lg);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .footer-section p,
         .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--on-dark-soft);
             text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            font-size: 13px;
+            line-height: 1.8;
         }
 
         .footer-section a:hover {
-            color: var(--pale-green);
+            color: var(--accent-green);
         }
 
         .footer-section ul {
@@ -823,67 +958,51 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
         }
 
         .footer-brand {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--on-dark);
+            margin-bottom: var(--space-sm);
+            letter-spacing: -0.5px;
         }
 
         .footer-owner {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 0.5rem;
+            font-size: 12px;
+            color: var(--on-dark-soft);
+            margin-bottom: var(--space-sm);
+            font-weight: 500;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(250, 249, 245, 0.08);
+            padding-top: var(--space-xl);
+            text-align: center;
+            color: var(--on-dark-soft);
+            font-size: 12px;
+            line-height: 1.6;
         }
 
         @media (max-width: 768px) {
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: var(--space-lg);
             }
 
             .footer-bottom {
-                padding-top: 1.5rem;
+                padding-top: var(--space-lg);
             }
         }
 
-        /* ==================== SCROLL REVEAL ==================== */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        /* ==================== UTILITY CLASSES ==================== */
+        /* ==================== UTILITY ==================== */
         .gradient-text {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
+            background: linear-gradient(135deg, var(--ink) 0%, var(--primary-coral) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-2 {
-            margin-top: 2rem;
         }
     </style>
 </head>
@@ -891,15 +1010,15 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">AG</div>
+            <a href="#" class="logo">
+                <div class="logo-mark">AG</div>
                 <span>Advertising Garden</span>
-            </div>
+            </a>
             <ul>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#why-join">Why Join</a></li>
                 <li><a href="#perks">Perks</a></li>
-                <li><a href="#cta" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Join Now</a></li>
+                <li><a href="#cta" class="btn btn-primary">Join Now</a></li>
             </ul>
         </div>
     </nav>
@@ -907,11 +1026,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>AG — Advertising Garden</h1>
-            <p class="hero-subtitle">Grow your community with us 🌱</p>
+            <h1>Advertising Garden</h1>
+            <p class="hero-subtitle">Cultivate your community's growth in a thriving ecosystem of engaged members, innovative brands, and endless opportunities.</p>
             <div class="hero-buttons">
                 <a href="https://discord.gg/HxmayWDesx" class="btn btn-primary" target="_blank">Join Now</a>
-                <a href="#features" class="btn btn-secondary">Explore Features</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
             </div>
         </div>
     </section>
@@ -920,49 +1039,49 @@
     <section id="features" class="section features">
         <div class="container">
             <div class="section-title">
-                <p>What We Offer</p>
-                <h2>Discover Our Features</h2>
+                <span class="section-label">What We Offer</span>
+                <h2>Discover Our Garden</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">📢</div>
-                    <h3>20+ Advertising Channels</h3>
-                    <p>Diverse channels for every niche and category, perfectly organized for maximum reach and engagement.</p>
+                    <h3>20+ Channels</h3>
+                    <p>Diverse advertising channels perfectly organized for maximum reach and engagement across all niches.</p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">🎉</div>
                     <h3>Monthly Events</h3>
-                    <p>Exciting community events and contests designed to bring members together and build lasting connections.</p>
+                    <p>Exciting community events and contests that bring members together and foster lasting connections.</p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">⭐</div>
-                    <h3>Leveling & Activity Perks</h3>
+                    <h3>Leveling System</h3>
                     <p>Earn rewards as you participate. Level up and unlock exclusive benefits and recognition.</p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">👥</div>
                     <h3>Friendly Staff</h3>
-                    <p>Our dedicated team is always here to help, moderate fairly, and foster a welcoming community.</p>
+                    <p>Our dedicated team moderates fairly and fosters a welcoming environment for all members.</p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">🎁</div>
                     <h3>Weekly Giveaways</h3>
-                    <p>Regular giveaways and prizes to reward active members and keep the community vibrant.</p>
+                    <p>Regular giveaways and prizes reward active members and keep our community vibrant.</p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">🤝</div>
                     <h3>Partners & Sponsors</h3>
-                    <p>Collaborate with brands, sponsors, and fellow communities for mutual growth and opportunities.</p>
+                    <p>Collaborate with brands and communities for mutual growth and exciting opportunities.</p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">💼</div>
-                    <h3>Work & Partnership Opportunities</h3>
-                    <p>Network with industry leaders and find opportunities for collaboration, growth, and career advancement.</p>
+                    <h3>Growth Opportunities</h3>
+                    <p>Network with industry leaders and discover partnerships, collaborations, and career paths.</p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">👔</div>
-                    <h3>Open Staff Positions</h3>
-                    <p>Join our management team! We're always looking for passionate members to help shape our community.</p>
+                    <h3>Staff Positions</h3>
+                    <p>Join our management team. We're always looking for passionate members to shape our community.</p>
                 </div>
             </div>
         </div>
@@ -977,26 +1096,26 @@
                     <div class="why-item scroll-reveal">
                         <div class="why-icon">🚀</div>
                         <div class="why-text-item">
-                            <h3>Fast Community Growth</h3>
-                            <p>Scale your reach quickly with access to an engaged audience across diverse advertising channels.</p>
+                            <h3>Scale Rapidly</h3>
+                            <p>Access an engaged audience across diverse channels. Grow your reach faster with our established platform.</p>
                         </div>
                     </div>
                     <div class="why-item scroll-reveal">
                         <div class="why-icon">⚡</div>
                         <div class="why-text-item">
-                            <h3>Active Ecosystem</h3>
-                            <p>Experience a vibrant, always-active community with regular events, contests, and engagement opportunities.</p>
+                            <h3>Active Community</h3>
+                            <p>Experience a vibrant, always-active ecosystem with regular events, contests, and engagement opportunities.</p>
                         </div>
                     </div>
                     <div class="why-item scroll-reveal">
                         <div class="why-icon">🌐</div>
                         <div class="why-text-item">
-                            <h3>Networking & Partnerships</h3>
-                            <p>Build valuable connections with brands, creators, and fellow community leaders in a supportive environment.</p>
+                            <h3>Network & Grow</h3>
+                            <p>Build valuable connections with brands, creators, and leaders in a supportive, collaborative environment.</p>
                         </div>
                     </div>
                 </div>
-                <div class="why-image scroll-reveal"></div>
+                <div class="why-image scroll-reveal">🌱</div>
             </div>
         </div>
     </section>
@@ -1005,8 +1124,8 @@
     <section id="perks" class="section perks">
         <div class="container">
             <div class="section-title scroll-reveal">
-                <p>Rewards</p>
-                <h2>Level up and unlock more perks 🌸</h2>
+                <span class="section-label">Rewards</span>
+                <h2>Level Up & Unlock Perks</h2>
             </div>
             <div class="perks-grid">
                 <div class="perk-item scroll-reveal">
@@ -1017,7 +1136,7 @@
                 <div class="perk-item scroll-reveal">
                     <div class="perk-icon">🎯</div>
                     <h3>Priority Access</h3>
-                    <p>Get early access to events, giveaways, and new features.</p>
+                    <p>Get early access to events, giveaways, and exciting new features.</p>
                 </div>
                 <div class="perk-item scroll-reveal">
                     <div class="perk-icon">💎</div>
@@ -1027,7 +1146,7 @@
                 <div class="perk-item scroll-reveal">
                     <div class="perk-icon">📈</div>
                     <h3>Growth Tools</h3>
-                    <p>Leverage our platform to amplify your reach and grow faster.</p>
+                    <p>Leverage our platform to amplify your reach and grow exponentially.</p>
                 </div>
             </div>
         </div>
@@ -1036,8 +1155,8 @@
     <!-- CTA Section -->
     <section id="cta" class="cta">
         <div class="cta-content">
-            <h2>Join AG Today</h2>
-            <p>Start growing your community with thousands of engaged members. It only takes a moment to join the Advertising Garden.</p>
+            <h2>Ready to Grow?</h2>
+            <p>Join thousands of thriving communities in the Advertising Garden. Start connecting, growing, and building with us today.</p>
             <a href="https://discord.gg/HxmayWDesx" class="btn btn-primary" target="_blank">Join Now</a>
         </div>
     </section>
@@ -1048,8 +1167,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">AG</div>
-                    <p class="footer-owner">Owned by zion_nub</p>
-                    <p>The premier community for growing your presence and connecting with like-minded individuals in the digital space.</p>
+                    <p class="footer-owner">Advertising Garden</p>
+                    <p>The premier community for brands, creators, and communities to grow together and connect authentically.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -1074,50 +1193,47 @@
                     <ul>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Advertising Garden (AG). All rights reserved. Built with 🌱 by zion_nub.</p>
+                <p>&copy; 2026 Advertising Garden (AG). All rights reserved. Owned by zion_nub. Crafted with care. 🌱</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Animations & Interactivity -->
+    <!-- JavaScript -->
     <script>
-        // Floating particles background
+        // Floating particles
         function createFloatingParticles() {
-            const particleCount = 20;
-            const container = document.body;
-
+            const particleCount = 15;
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
                 particle.style.animationDelay = Math.random() * 5 + 's';
-                particle.style.animationDuration = (5 + Math.random() * 3) + 's';
-                container.appendChild(particle);
+                particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+                document.body.appendChild(particle);
             }
         }
 
-        // Falling leaves animation
+        // Falling leaves
         function createFallingLeaves() {
             const leaves = ['🍃', '🌿', '🍂', '🌱'];
-            const leafInterval = setInterval(() => {
+            setInterval(() => {
                 const leaf = document.createElement('div');
                 leaf.classList.add('leaf');
                 leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
                 leaf.style.left = Math.random() * 100 + 'vw';
                 leaf.style.animationDuration = (8 + Math.random() * 4) + 's';
                 document.body.appendChild(leaf);
-
                 setTimeout(() => leaf.remove(), 12000);
             }, 3000);
         }
 
-        // Scroll reveal animation
+        // Scroll reveal
         function observeScrollReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -1128,7 +1244,7 @@
                 });
             }, {
                 threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
+                rootMargin: '0px 0px -50px 0px'
             });
 
             document.querySelectorAll('.scroll-reveal').forEach((el) => {
@@ -1136,7 +1252,7 @@
             });
         }
 
-        // Smooth scroll for navigation links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -1147,21 +1263,11 @@
             });
         });
 
-        // Initialize on load
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             createFloatingParticles();
             createFallingLeaves();
             observeScrollReveal();
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 10) {
-                nav.style.boxShadow = '0 4px 20px rgba(45, 90, 61, 0.15)';
-            } else {
-                nav.style.boxShadow = 'var(--shadow-light)';
-            }
         });
     </script>
 </body>
